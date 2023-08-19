@@ -1,6 +1,6 @@
 import {useRef,useState} from "react";
 
-const DiaryEditor = ()=>{
+const DiaryEditor = ({onCreate})=>{
 
     const authorInput = useRef();
     const contentInput = useRef();
@@ -29,8 +29,12 @@ const DiaryEditor = ()=>{
             contentInput.current.focus();
             return;
         }
-
+        
         alert("저장성공");
+        onCreate(state.author,state.content,state.emotion);
+       
+
+       
     }
 
     return <div className="DiaryEditor">
