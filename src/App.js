@@ -47,12 +47,17 @@ const App = () =>{
     setData([newItem,...data]);//최근 것이 먼저 오도록 하기 위해 ...data보다 앞에 쓴다.
 
   };
+
+  const onDelete = (targetId) => {
+    const newDiaryList = data.filter((it) => it.id !== targetId);
+    setData(newDiaryList);
+  };
   
 
   return (
     <div className="App">
       <DiaryEditor onCreate = {onCreate}/>
-      <DiaryList diaryList = {data}/>
+      <DiaryList  diaryList = {data} onDelete = {onDelete}/>
     </div>
   );
 }
