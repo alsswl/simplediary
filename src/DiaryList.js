@@ -8,11 +8,11 @@ const DiaryList = ({onDelete,diaryList}) =>{
         <div>
             {diaryList.map((it) => (
                <DiaryItem key = {it.id} {...it} onDelete = {onDelete}/>
-            ))}
+            ))} 
         </div>
     </div>
     );
-};
+}; //다이어리아이템 컴포넌트로 위 내용을 사용한다.
 
 DiaryList.defaultProps = {
     diaryList : [],
