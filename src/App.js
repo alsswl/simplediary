@@ -48,7 +48,7 @@ const App = () =>{
 
   };
 
-  const onDelete = (targetId) => {
+  const onRemove = (targetId) => {
     const newDiaryList = data.filter((it) => it.id !== targetId);
     //target 빼고 출력하기 위해서
     setData(newDiaryList); //이걸 다시 데이터에 넣는다.
@@ -58,7 +58,7 @@ const App = () =>{
   return (
     <div className="App">
       <DiaryEditor onCreate = {onCreate}/>
-      <DiaryList  diaryList = {data} onDelete = {onDelete}/> 
+      <DiaryList  diaryList = {data} onRemove = {onRemove}/> 
     </div>
   );// diarylist는 일기 리스트. data를 전달한다.
 }
