@@ -30,7 +30,7 @@ import DiaryList from './DiaryList';
 
 
 const App = () =>{
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); //data state를 만든다.
 
   const dataId = useRef(0);
 
@@ -46,7 +46,7 @@ const App = () =>{
     dataId.current += 1;
     setData([newItem,...data]);//최근 것이 먼저 오도록 하기 위해 ...data보다 앞에 쓴다.
 
-  };
+  };//state에 데이터를 계속 추가해나간다.
 
   const onRemove = (targetId) => {
     const newDiaryList = data.filter((it) => it.id !== targetId);
@@ -54,11 +54,17 @@ const App = () =>{
     setData(newDiaryList); //이걸 다시 데이터에 넣는다.
   };
   
+  const onEdit = (targetId,newContent) =>{
+    setData(
+      data.map((it) => it.id === targetId ? {...it, content : newContent} : it)
+    );
+  }; //데이터를 수정하는 함수이다. map함수를 사용하고 it의 아이디가 받은 아이디와 비슷하다면 나머지는 다 원래대로 하고, 
+  //content만 newContent로 바꾼다.
 
   return (
     <div className="App">
       <DiaryEditor onCreate = {onCreate}/>
-      <DiaryList  diaryList = {data} onRemove = {onRemove}/> 
+      <DiaryList  onEdit = {onEdit} diaryList = {data} onRemove = {onRemove}/> 
     </div>
   );// diarylist는 일기 리스트. data를 전달한다.
 }
